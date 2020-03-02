@@ -33,7 +33,7 @@ matrix:
     os: osx
     osx_image: xcode11.2
     script:
-    - make -f Makefile.libretro -j 4
+    - make platform=osx -f Makefile.libretro -j 4
     - zip genesis_plus_gx-OSX-x86_64-${TRAVIS_TAG:1}.zip genesis_plus_gx_libretro.dylib
   - name: Windows x86_64
     os: windows
