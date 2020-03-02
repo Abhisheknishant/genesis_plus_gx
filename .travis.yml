@@ -8,7 +8,7 @@ matrix:
   - name: Linux x86_64
     dist: bionic
     script:
-    - make -j 4
+    - make -f Makefile.libretro -j 4
     - zip genesis_plus_gx-Linux-x86_64-${TRAVIS_TAG:1}.zip genesis_plus_gx_libretro.so
   - name: Linux arm64
     dist: bionic
@@ -16,7 +16,7 @@ matrix:
     before_install:
     - sudo apt-get install zip
     script:
-    - make -j 4
+    - make -f Makefile.libretro -j 4
     - zip genesis_plus_gx-Linux-arm64-${TRAVIS_TAG:1}.zip genesis_plus_gx_libretro.so
   - name: Linux armv7 neon
     dist: bionic
@@ -27,20 +27,20 @@ matrix:
     script:
     - docker pull dockcross/linux-armv7
     - docker run --rm -v "$PWD":/usr/src/myapp -w /usr/src/myapp dockcross/linux-armv7
-      make platform=unix-armv-neon-hardfloat -j 4
+      make platform=unix-armv-neon-hardfloat -f Makefile.libretro -j 4
     - zip genesis_plus_gx-Linux-arm-${TRAVIS_TAG:1}.zip genesis_plus_gx_libretro.so
   - name: OSX x86_64
     os: osx
     osx_image: xcode11.2
     script:
-    - make -j 4
+    - make -f Makefile.libretro -j 4
     - zip genesis_plus_gx-OSX-x86_64-${TRAVIS_TAG:1}.zip genesis_plus_gx_libretro.dylib
   - name: Windows x86_64
     os: windows
     before_install:
     - choco install make --ignore-checksums
     script:
-    - make platform=win -j 4
+    - make platform=win -f Makefile.libretro -j 4
     - 7z a genesis_plus_gx-Windows-x86_64-${TRAVIS_TAG:1}.zip genesis_plus_gx_libretro.dll
 deploy:
   skip_cleanup: true
