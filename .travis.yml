@@ -31,7 +31,7 @@ matrix:
     - zip genesis_plus_gx-Linux-arm-${TRAVIS_TAG:1}.zip genesis_plus_gx_libretro.so
   - name: OSX x86_64
     os: osx
-    osx_image: xcode11.2
+    osx_image: xcode11.3
     script:
     - make platform=osx -f Makefile.libretro -j 4
     - zip genesis_plus_gx-OSX-x86_64-${TRAVIS_TAG:1}.zip genesis_plus_gx_libretro.dylib
